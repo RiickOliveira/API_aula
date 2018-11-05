@@ -1,0 +1,78 @@
+<html lang="en" >
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+
+  <link rel="stylesheet" href="./estilo.css">
+
+  <!-- Toast -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  
+</head>
+
+<body ng-app="appTodo" ng-cloak>  
+	
+
+	<div ng-controller="TodoController" layout="row" flex="" layout-fill="" >
+		
+		<div layout="column">
+			<div layout="row" class="row-todo" ng-repeat="item in vm.dsLista.data">
+        <md-checkbox ng-model="item.isComplete" aria-label="Concluído" class="font-size-10"
+        ng-change="vm.atualizaTodo(item)">
+            		{{item.isComplete ? 'Concluído' : 'Pendente'}}
+          		</md-checkbox>
+
+          		<span class="ml-20 font-size-18">{{item.name}}</span>
+      </div>
+    </div>	
+    
+    <div layout="row" style="padding:20px; height: 50px; border-left: 1px; border-left-style: dashed;">
+      <md-input-container>
+        <label>Tarefa</label>
+        <input ng-model="vm.todoName">
+      </md-input-container>
+      <md-button ng-click="vm.adicionaTarefa()" class="md-warn md-raised"> Add</md-button>
+    </div>
+			
+			  
+	</div>
+
+  
+  
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-resource.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+
+  <!-- TOASTR notificador -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js" 
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  
+  
+
+  <!-- Nossa aplicacao  -->
+
+  <script type="text/javascript">    
+    
+    angular.module('appTodo', ['ngMaterial', 'ngMessages', 'ngResource']);
+
+
+  </script>
+
+  <script src="./TodoController.js"></script>
+
+</body>
+</html>
